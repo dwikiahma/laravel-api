@@ -1,0 +1,125 @@
+***** Mendaftarkan User Baru
+POST  http://localhost:8000/api/auth/signup
+      Body :
+      {
+	      "username" : "dwiki",
+	      "password" : "00000000",
+        "email"    : "dwiki@email.com"
+      }
+
+****  Login User
+POST  http://localhost:8000/api/auth/signin
+      Body :
+      {
+	      "username" : "dwiki",
+	      "password" : "00000000"
+      }
+
+***** Menampilkan User Yang Sedang Aktif
+GET   http://localhost:8000/api/profile
+
+***** Membuat Tutorial
+POST  http://localhost:8000/api/tutorial
+      Body :
+      {
+        "title" : "Halo Halo Semarang",
+        "body"  : "Halo Halo Semarang Halo Halo Semarang Halo Halo Semarang"
+      }
+
+***** Menampikan Semua Tutorial
+GET   http://localhost:8000/api/tutorial
+
+***** Menampikan Tutorial Berdasarkan ID-nya
+GET   http://localhost:8000/api/tutorial/1
+GET   http://localhost:8000/api/tutorial/2
+
+***** Mengedit tutorial berdasarkan ID kepemilikan
+PUT   http://localhost:8000/api/tutorial/1
+      Body :
+      {
+        "title" : "Halo Halo Surabaya",
+        "body"  : "Halo Halo Surabaya Halo Halo Surabaya Halo Halo Surabaya"
+      }
+
+*****  Menghapus tutorial berdasarkan ID kepemilikan
+DELETE http://localhost:8000/api/tutorial/1
+
+***** Memberi Komentar Tutorial Berdasarkan ID
+POST  http://localhost:8000/api/comment/1
+      Body :
+      {
+        "body"  : "Komentar Halo Halo Semarang"
+      }
+
+
+----- LANGKAH AWAL INSTALL PROJECT -----------------------------------
+
+  buat database db_blablabla
+  php artisan key:generate
+  php artisan serve
+  php artisan migrate --seed
+
+  -Kalau gak ada vendor
+   composer install
+
+PHP ARTISAN ----------------------------------------------------------
+
+- Memulai Laravel :
+  php artisan serve
+
+- Migrations Database
+  php artisan migrate
+
+- Menghapus Semua Data di Database Migrations :
+  php artisan migrate:fresh
+
+- Menghapus Semua Table di Database Migrations :
+  php artisan migrate:rollback
+
+- Membuat File Migration :
+  php artisan make:migration nama_migration_nya
+
+- Membuat File Model :
+  php artisan make:model NamaModelnya
+
+- Membuat File Migration Beserta Modelnya :
+  php artisan make:model NamaModelnya -m
+
+- Membuat File Controller :
+  php artisan make:controller NamaControllernya
+
+- Membuat Table Seeder :
+  php artisan make:seeder NamaSeedernya
+  - php artisan db:seed --class=NamaClassnya(NamaSeedernya)
+    ATAU kalau classnya sdh ada di DatabaseSeeder.php pakai yg ini :
+  - php artisan db:seed
+
+----------------------------------------------------------------------
+
+  *** Artisan Untuk V4 / V69 ***
+  - Untuk Database Relasi :
+    composer require doctrine/dbal
+    php artisan migrate
+
+  - Untuk File Upload Image :
+    composer require intervention/image
+
+  - Install NPM
+    rm -rf node_modules
+    rm package-lock.json yarn.lock
+    npm cache clear --force
+    npm install
+
+  - Untuk Export PDF
+    composer require barryvdh/laravel-dompdf
+
+  - Untuk Export Excel
+    composer require maatwebsite/excel
+
+  - Untuk library Chart.js
+    -npm install laravel-mix   -->ini saja
+       atau (npm init -y)
+    -npm install chart.js --save
+    -npm run dev
+
+----------------------------------------------------------------------
